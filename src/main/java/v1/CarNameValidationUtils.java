@@ -17,7 +17,7 @@ public class CarNameValidationUtils {
     }
 
     private static boolean isValid(final String carName) {
-        return carName.length() == 0 || LENGTH_LIMIT < carName.length();
+        return "".equals(carName) || LENGTH_LIMIT < carName.length();
     }
 
 }
