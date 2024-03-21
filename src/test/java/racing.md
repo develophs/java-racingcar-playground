@@ -7,8 +7,8 @@
   - 입력한 자동차 수 만큼 자동차를 생성한다. -> 자동차 생성 객체 CarFacotry.create(String carName)
   - 입력한 횟수 만큼 경기를 진행한다. -> 경기 진행 객체 -> GameRound(int round)
   - 위 세개의 객체들을 서로 협력을 통해 입력, 자동차생성, 경기를 진행한다.
-- [ ] 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
-  - 난수 발생 객체 NumberGenerator#generate()
+- [x] 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+  - [x] 난수 발생 객체 NumberGenerator#generate()
   - [x] 난수가 4이상인지 판단하고(boolean), 4이상인 경우 자동차를 전진시킨다.
   - [x] 값을 자동차에게 전달하고 자동차에서 4이상이면 전진 v1.Car#proceed(int random)
 - [ ] 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
