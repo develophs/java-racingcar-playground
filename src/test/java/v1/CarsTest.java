@@ -17,8 +17,8 @@ public class CarsTest {
 
         // then
         assertThat(cars.getCars()).hasSize(2);
-        assertThat(cars.getCars().get(0).getName()).isEqualTo("강아지");
-        assertThat(cars.getCars().get(1).getName()).isEqualTo("고양이");
+        assertThat(cars.getCarNameByIndex(0)).isEqualTo("강아지");
+        assertThat(cars.getCarNameByIndex(1)).isEqualTo("고양이");
     }
 
 }

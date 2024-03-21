@@ -18,4 +18,8 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public String getCarNameByIndex(int index) {
+        return cars.get(index).getName();
+    }
 }
