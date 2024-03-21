@@ -11,6 +11,10 @@ public class Cars {
         cars = new ArrayList<>();
     }
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public void addCar(final Car car) {
         cars.add(car);
     }
