@@ -21,7 +21,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1,0", "2,0", "3,0"})
+    @CsvSource({"1,0", "2,0", "3,0", "10,0"})
     void 자동차는_3이하_10이상의_연료를_받는경우_전진하지_않는다(int fuel, int expectedStep) {
         // given
         Car car = new Car("name");

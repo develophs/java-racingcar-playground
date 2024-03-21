@@ -19,4 +19,8 @@ public class Car {
     public int steps() {
         return this.step;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
