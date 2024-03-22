@@ -51,4 +51,17 @@ public class CarsTest {
                 .containsExactlyInAnyOrder("dog", "tiger");;
     }
 
+    @Test
+    void 우승_자동차들의_이름을_가져온다() {
+        // given
+        Cars cars = new Cars(Arrays.asList(new Car("cat",1), new Car("dog",2), new Car("tiger",2)));
+        cars = cars.getWinners();
+
+        // when
+        final String winnersName = cars.getWinnersName();
+
+        // then
+        assertThat(winnersName).isEqualTo("dog, tiger");
+    }
+
 }
