@@ -10,6 +10,11 @@ public class Car {
         this.step = 0;
     }
 
+    public Car(String name, int step) {
+        this.name = name;
+        this.step = step;
+    }
+
     public void proceed(int fuel) {
         if (FuelValidationUtils.isSufficient(fuel)) {
             this.step++;
@@ -32,4 +37,7 @@ public class Car {
         System.out.println();
     }
 
+    public boolean isSameStep(final int maxValue) {
+        return step == maxValue;
+    }
 }

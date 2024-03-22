@@ -1,5 +1,6 @@
 package v1;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -31,6 +32,20 @@ public class CarTest {
 
         // then
         assertThat(car.steps()).isEqualTo(expectedStep);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"5,true", "3,false"})
+    void 자동차는_계산된_최대값과_자기자신의_스텝을_비교할_수_있다(int carStep, boolean expect) {
+        // given
+        Car car = new Car("name", carStep);
+        int max = 5;
+
+        // when
+        boolean isTrue = car.isSameStep(max);
+
+        // then
+        assertThat(isTrue).isEqualTo(expect);
     }
 
 }
