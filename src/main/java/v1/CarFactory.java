@@ -21,7 +21,9 @@ public class CarFactory {
 
     public Cars constructCars(final String carName) {
         final String[] carNames = new StringSplitter(carName).split(",");
+        CarNameValidationUtils.validateCarNames(carNames);
         final List<Car> cars = Arrays.stream(carNames).map(name -> construct(name)).collect(Collectors.toList());
         return new Cars(cars);
     }
+
 }
