@@ -16,10 +16,6 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void addCar(final Car car) {
-        cars.add(car);
-    }
-
     public List<Car> getCars() {
         return cars;
     }

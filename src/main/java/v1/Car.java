@@ -16,7 +16,7 @@ public class Car {
     }
 
     public void proceed(int fuel) {
-        if (FuelValidationUtils.isSufficient(fuel)) {
+        if (isSufficient(fuel)) {
             this.step++;
         }
     }
@@ -39,5 +39,12 @@ public class Car {
 
     public boolean isSameStep(final int maxValue) {
         return step == maxValue;
+    }
+
+    private boolean isSufficient(int fuel) {
+        int min = 4;
+        int max = 9;
+
+        return min <= fuel && fuel <= max;
     }
 }
