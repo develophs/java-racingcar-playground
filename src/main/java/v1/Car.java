@@ -23,4 +23,13 @@ public class Car {
     public String getName() {
         return this.name;
     }
+
+    public void printSteps() {
+        System.out.print(name + " : ");
+        for (int i = 0; i < step ; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
 }

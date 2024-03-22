@@ -26,4 +26,19 @@ public class Cars {
     public String getCarNameByIndex(int index) {
         return cars.get(index).getName();
     }
+
+    public void play(int gameRound) {
+        for (int i = 0; i < gameRound ; i++) {
+            proceedStep();
+        }
+    }
+
+    private void proceedStep() {
+        cars.forEach(car -> {
+            final int fuel = new NumberGenerator().generate();
+            car.proceed(fuel);
+            car.printSteps();
+        });
+        System.out.println();
+    }
 }
