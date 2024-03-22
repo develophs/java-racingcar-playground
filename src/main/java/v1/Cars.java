@@ -2,6 +2,7 @@ package v1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -40,5 +41,16 @@ public class Cars {
             car.printSteps();
         });
         System.out.println();
+    }
+
+    public Cars getWinners() {
+        final int maxStep = getMaxStep();
+        final List<Car> winners = cars.stream().filter(car -> car.isSameStep(maxStep)).collect(Collectors.toList());
+        return new Cars(winners);
+    }
+
+    // 최대값이 0이고, 모든 자동차의 step도 0이면 공동우승 >> 버그 X
+    private int getMaxStep() {
+        return cars.stream().mapToInt(car -> car.steps()).max().orElse(0);
     }
 }
