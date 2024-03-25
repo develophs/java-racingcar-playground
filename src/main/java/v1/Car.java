@@ -6,8 +6,7 @@ public class Car {
     private int step;
 
     public Car(String name) {
-        this.name = name;
-        this.step = 0;
+        this(name, 0);
     }
 
     public Car(String name, int step) {
@@ -42,9 +41,6 @@ public class Car {
     }
 
     private boolean isSufficient(int fuel) {
-        int min = 4;
-        int max = 9;
-
-        return min <= fuel && fuel <= max;
+        return 4 <= fuel && fuel <= 9;
     }
 }
