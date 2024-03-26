@@ -53,6 +53,18 @@ public class PositionTest {
         assertThat(newPosition).isEqualTo(new Position(1));
     }
 
+    @Test
+    void 포지션은_자신의_상태를_확인할_수_있다() {
+        // given
+        Position position = new Position(3);
+
+        // when
+        final boolean isSame = position.isSame(3);
+
+        // then
+        assertThat(isSame).isTrue();
+    }
+
 
 
 }
