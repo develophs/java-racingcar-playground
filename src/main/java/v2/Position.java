@@ -40,4 +40,14 @@ public class Position {
         return Objects.hash(position);
     }
 
+    // position은 값이 궁금한게 아닌 현재 상태를 "-"로 출력하면된다.
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
+    }
+
 }

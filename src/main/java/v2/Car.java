@@ -37,4 +37,8 @@ public class Car {
         return Objects.hash(carName, position);
     }
 
+    @Override
+    public String toString() {
+        return carName + " : "+ position.toString();
+    }
 }
