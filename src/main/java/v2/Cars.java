@@ -10,8 +10,14 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Car get(final int index) {
-        return cars.get(index);
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void race() {
+        cars.forEach(car -> {
+            car.move(Number.getRandomNumber());
+        });
     }
 
 }

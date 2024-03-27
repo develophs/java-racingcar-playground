@@ -45,7 +45,9 @@ public class InputView {
             }
             round = Integer.valueOf(input);
             positive = isPositive(round);
-            System.out.println("레이싱 라운드는 양수를 입력해주세요");
+            if (!positive) {
+                System.out.println("레이싱 라운드는 양수를 입력해주세요");
+            }
         }
         return round;
     }
