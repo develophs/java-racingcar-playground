@@ -21,10 +21,10 @@ public class Cars {
         });
     }
 
-    public Cars getWinners() {
+    public List<Car> getWinners() {
         final int max = getMax();
         final List<Car> winners = cars.stream().filter(car -> car.isSamePosition(max)).collect(Collectors.toList());
-        return new Cars(winners);
+        return winners;
     }
 
     private int getMax() {

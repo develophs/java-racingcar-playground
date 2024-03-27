@@ -42,7 +42,7 @@ public class CarsTest {
         ));
 
         // when
-        final List<Car> winner = cars.getWinners().getCars();
+        final List<Car> winner = cars.getWinners();
 
         // then
         assertThat(winner).hasSize(2)
