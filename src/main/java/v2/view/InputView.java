@@ -1,14 +1,11 @@
 package v2.view;
 
 import v2.StringSplit;
+import v2.common.exception.EmptyException;
+import v2.common.exception.NegativeException;
 
 import java.util.Scanner;
 
-/**
- * 예외 발생을 안시키고 재입력을 받을려고하니 코드가 너무 더러워졌다..
- * 리팩토링이 가능은 한걸까...
- * 아.... 예외 던지고 싶다.
- */
 public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -24,7 +21,7 @@ public class InputView {
 
     private static boolean isValidCarNames(String carNames) {
         for (String name : splitCarNames(carNames)) {
-            if (isValid(name.trim())) {
+            if (isNotValid(name.trim())) {
                 System.out.println("자동차의 이름은 0글자 이상 5글자 이하여야 합니다. 다시 입력해주세요.");
                 return false;
             }
@@ -38,43 +35,39 @@ public class InputView {
         return split;
     }
 
-    private static boolean isValid(final String trimmedName) {
+    private static boolean isNotValid(final String trimmedName) {
         return trimmedName.length() > 5 || trimmedName.length() == 0;
     }
 
     public static int getRacingRound() {
         System.out.println("시도할 회수는 몇회인가요?");
-        int round = 0;
-        boolean positive = false;
-        while (!positive) {
-            String input = scanner.nextLine();
-            if (isBlank(input)) {
-                System.out.println("레이싱 라운드를 입력해주세요");
-                continue;
-            }
+        return getRound();
+    }
+
+    private static int getRound() {
+        while (true) {
             try {
-                round = Integer.valueOf(input);
-            } catch (NumberFormatException e) {
-                System.out.println("숫자를 입력해주세요.");
-                continue;
-            }
-            positive = isPositive(round);
-            if (!positive) {
-                System.out.println("레이싱 라운드는 양수를 입력해주세요");
+                String input = scanner.nextLine();
+                validateBlank(input);
+                int round = Integer.valueOf(input);
+                validatePositive(round);
+                return round;
+            } catch (EmptyException | NumberFormatException | NegativeException e) {
+                System.out.println(e.getMessage());
             }
         }
-        return round;
     }
 
-    private static boolean isBlank(final String input) {
-        if ("".equals(input)) {
-            return true;
+    private static void validateBlank(final String input) {
+        if ("".equals(input.trim())) {
+            throw new EmptyException("레이싱 라운드를 입력해주세요");
         }
-        return false;
     }
 
-    private static boolean isPositive(final int round) {
-        return round > 0;
+    private static void validatePositive(final int round) {
+        if (round <= 0) {
+            throw new EmptyException("0보다 큰 수를 입력해주세요");
+        }
     }
 
 }
