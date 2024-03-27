@@ -7,13 +7,11 @@ import java.util.stream.Collectors;
 public class Game {
 
     private final Cars cars;
-    private final int gameRound;
-    private int currentRound;
+    private int gameRound;
 
     public Game(final String carNames, final int gameRound) {
         this.cars = init(carNames);
         this.gameRound = gameRound;
-        this.currentRound = 0;
     }
 
     private Cars init(String carNames) {
@@ -27,12 +25,12 @@ public class Game {
     }
 
     public void race() {
+        gameRound--;
         cars.race();
-        currentRound++;
     }
 
     public boolean isEnd() {
-        return currentRound == gameRound;
+        return gameRound == 0;
     }
 
     public List<Car> getCurrentCars() {

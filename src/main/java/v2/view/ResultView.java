@@ -10,7 +10,7 @@ public class ResultView {
     public static void printStatus(final List<Car> cars) {
         System.out.println("실행 결과");
         cars.forEach(car -> {
-            System.out.println(car.toString());
+            System.out.println(car);
         });
         System.out.println();
     }

@@ -7,6 +7,7 @@ import java.util.Scanner;
 /**
  * 예외 발생을 안시키고 재입력을 받을려고하니 코드가 너무 더러워졌다..
  * 리팩토링이 가능은 한걸까...
+ * 아.... 예외 던지고 싶다.
  */
 public class InputView {
 
@@ -22,15 +23,23 @@ public class InputView {
     }
 
     private static boolean isValidCarNames(String carNames) {
-        final StringSplit stringSplit = new StringSplit(carNames);
-        final String[] split = stringSplit.split(",");
-        for (String name : split) {
-            if (name.trim().length() > 5 || name.trim().length() == 0) {
+        for (String name : splitCarNames(carNames)) {
+            if (isValid(name.trim())) {
                 System.out.println("자동차의 이름은 0글자 이상 5글자 이하여야 합니다. 다시 입력해주세요.");
                 return false;
             }
         }
         return true;
+    }
+
+    private static String[] splitCarNames(final String carNames) {
+        final StringSplit stringSplit = new StringSplit(carNames);
+        final String[] split = stringSplit.split(",");
+        return split;
+    }
+
+    private static boolean isValid(final String trimmedName) {
+        return trimmedName.length() > 5 || trimmedName.length() == 0;
     }
 
     public static int getRacingRound() {
@@ -43,7 +52,12 @@ public class InputView {
                 System.out.println("레이싱 라운드를 입력해주세요");
                 continue;
             }
-            round = Integer.valueOf(input);
+            try {
+                round = Integer.valueOf(input);
+            } catch (NumberFormatException e) {
+                System.out.println("숫자를 입력해주세요.");
+                continue;
+            }
             positive = isPositive(round);
             if (!positive) {
                 System.out.println("레이싱 라운드는 양수를 입력해주세요");
